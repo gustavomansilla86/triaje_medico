@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Triaje</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>Historial de Triaje</h1>
+        <p class="subtitle">Pacientes pendientes de atención</p>
+
+        {% if historial|length == 0 %}
+            <p class="warning">No hay pacientes pendientes.</p>
+        {% else %}
+            {% for item in historial %}
+
+                {% set prioridad = item.resultado.prioridad|lower|trim %}
+
+                <div class="data-box
+                    {% if prioridad == 'crítica' or prioridad == 'critica' %}card-critico
+                    {% elif prioridad == 'alta' %}card-alto
+                    {% elif prioridad == 'media' %}card-medio
+                    {% elif prioridad == 'baja' %}card-bajo
+                    {% endif %}
+                ">
+
+                    <h3>Paciente #{{ item.id }}</h3>
+
+                    <p><strong>Derivación:</strong> {{ item.resultado.derivacion }}</p>
+
+                    <p>
+                        <strong>Prioridad:</strong>
+                        <span class="
+                            {% if prioridad == 'crítica' or prioridad == 'critica' %}critico
+                            {% elif prioridad == 'alta' %}alto
+                            {% elif prioridad == 'media' %}medio
+                            {% elif prioridad == 'baja' %}bajo
+                            {% endif %}
+                        ">
+                            {{ item.resultado.prioridad }}
+                        </span>
+                    </p>
+
+                    <p><strong>Puntaje:</strong> {{ item.resultado.puntaje }}</p>
+
+                    <p><strong>Edad:</strong> {{ item.edad }}</p>
+                    <p><strong>Frecuencia cardíaca:</strong> {{ item.frecuencia_cardiaca }}</p>
+                    <p><strong>Presión sistólica:</strong> {{ item.presion_sistolica }}</p>
+                    <p><strong>Saturación:</strong> {{ item.saturacion_oxigeno }}%</p>
+                    <p><strong>Temperatura:</strong> {{ item.temperatura }} °C</p>
+                    <p><strong>Dolor:</strong> {{ item.nivel_dolor }}</p>
+
+                    <h4>Motivos</h4>
+                    <ul>
+                        {% for motivo in item.resultado.motivos %}
+                            <li>{{ motivo }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <form action="/dar_baja/{{ item.id }}" method="post">
+                        <button type="submit">Dar de baja / Atendido</button>
+                    </form>
+                </div>
+
+                <br>
+            {% endfor %}
+        {% endif %}
+
+        <a href="/" class="back-button">Cargar nuevo paciente</a>
+    </div>
+</div>
+
+</body>
+</html>

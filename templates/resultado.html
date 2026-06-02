@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado del Triaje</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="card result-card">
+        <h1>Resultado del Triaje</h1>
+
+        <div class="result-box">
+            <h2>{{ resultado.derivacion }}</h2>
+            <p class="priority">Prioridad: {{ resultado.prioridad }}</p>
+            <p>Puntaje obtenido: <strong>{{ resultado.puntaje }}</strong></p>
+            <p>Nivel estimado de triaje: <strong>{{ resultado.triage_level_estimado }}</strong></p>
+        </div>
+
+        <h3>Motivos detectados</h3>
+        <ul>
+            {% for motivo in resultado.motivos %}
+            <li>{{ motivo }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Datos ingresados</h3>
+        <div class="data-box">
+            <p><strong>Edad:</strong> {{ edad }}</p>
+            <p><strong>Frecuencia cardíaca:</strong> {{ frecuencia_cardiaca }}</p>
+            <p><strong>Presión sistólica:</strong> {{ presion_sistolica }}</p>
+            <p><strong>Saturación:</strong> {{ saturacion_oxigeno }}%</p>
+            <p><strong>Temperatura:</strong> {{ temperatura }} °C</p>
+            <p><strong>Nivel de dolor:</strong> {{ nivel_dolor }}</p>
+            <p><strong>Enfermedades crónicas:</strong> {{ cantidad_enfermedades_cronicas }}</p>
+            <p><strong>Visitas previas a guardia:</strong> {{ visitas_previas_guardia }}</p>
+            <p><strong>Modo de llegada:</strong> {{ modo_llegada }}</p>
+        </div>
+
+        
+        <a href="/" class="back-button">Cargar otro paciente</a>
+    </div>
+</div>
+
+</body>
+</html>

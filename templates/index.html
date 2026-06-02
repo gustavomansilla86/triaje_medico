@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha de Triaje Médico</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>Ficha de Triaje Preventivo</h1>
+        <p class="subtitle">Carga de datos clínicos del paciente</p>
+
+        <form action="/resultado" method="post">
+
+            <div class="grid">
+                <div class="field">
+                    <label>Edad</label>
+                    <input type="number" name="edad" required>
+                </div>
+
+                <div class="field">
+                    <label>Frecuencia cardíaca</label>
+                    <input type="number" name="frecuencia_cardiaca" required>
+                </div>
+
+                <div class="field">
+                    <label>Presión sistólica</label>
+                    <input type="number" name="presion_sistolica" required>
+                </div>
+
+                <div class="field">
+                    <label>Saturación de oxígeno (%)</label>
+                    <input type="number" name="saturacion_oxigeno" required>
+                </div>
+
+                <div class="field">
+                    <label>Temperatura corporal</label>
+                    <input type="number" step="0.1" name="temperatura" required>
+                </div>
+
+                <div class="field">
+                    <label>Nivel de dolor 0 a 10</label>
+                    <input type="number" min="0" max="10" name="nivel_dolor" required>
+                </div>
+
+                <div class="field">
+                    <label>Enfermedades crónicas</label>
+                    <input type="number" min="0" name="cantidad_enfermedades_cronicas" required>
+                </div>
+
+                <div class="field">
+                    <label>Visitas previas a guardia</label>
+                    <input type="number" min="0" name="visitas_previas_guardia" required>
+                </div>
+
+                <div class="field full">
+                    <label>Modo de llegada</label>
+                    <select name="modo_llegada" required>
+                        <option value="">Seleccionar</option>
+                        <option value="walk-in">Por sus propios medios</option>
+                        <option value="wheelchair">Silla de ruedas</option>
+                        <option value="ambulance">Ambulancia</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Evaluar paciente</button>
+        </form>
+
+        <!-- BOTONES CORREGIDOS -->
+        <a href="/historial" class="back-button">Ver historial de pacientes</a>
+
+    </div>
+</div>
+
+</body>
+</html>
