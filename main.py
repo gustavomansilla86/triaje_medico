@@ -24,7 +24,7 @@ contador_id = 1
 
 
 app = FastAPI(
-    title="Agente de Triaje Preventivo",
+    title="Sistema de Apoyo al Triaje en Guardia",
     description="Sistema de recomendación médica con árbol de decisión entrenado sobre dataset.",
     version="3.0"
 )
