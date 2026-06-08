@@ -74,3 +74,6 @@ El **Agente de Triaje Preventivo** evalúa la prioridad de atención médica de 
     Luego abre tu navegador preferido e ingresa a `http://127.0.0.1:8000`.
 
 ---
+en su defecto se prodria usar la siguiente pagina de manera online
+
+https://triaje-medico.onrender.com/
